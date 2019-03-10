@@ -20,7 +20,3 @@ CORS(app.app)
 application = app.app
 
 logger.info('App initialized')
-
-if __name__ == '__main__':
-    # run our standalone server
-    app.run(port=8080)

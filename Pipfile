@@ -10,6 +10,9 @@ name = "pypi"
 connexion = {extras = ["swagger-ui"]}
 flask-cors = "*"
 gunicorn = "*"
+requests = "*"
+ics = "*"
+python-dateutil = "*"
 
 
 [dev-packages]
