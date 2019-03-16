@@ -8,7 +8,7 @@ name = "pypi"
 [packages]
 
 connexion = {extras = ["swagger-ui"]}
-flask-cors = "*"
+Flask-Cors = "*"
 gunicorn = "*"
 requests = "*"
 ics = "*"

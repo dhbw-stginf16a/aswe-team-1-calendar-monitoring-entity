@@ -21,7 +21,6 @@ class TestRequest(TestConnexion):
         response = client.post('api/v1/request', json=request)
 
         assert response.status_code == 200
-        print(response.get_json())
 
     def test_getEventsTimerange(self, client):
         request = {
@@ -36,4 +35,3 @@ class TestRequest(TestConnexion):
         response = client.post('api/v1/request', json=request)
 
         assert response.status_code == 200
-        print(response.get_json())

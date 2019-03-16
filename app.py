@@ -5,7 +5,9 @@ import logging
 import connexion
 from flask_cors import CORS
 
+from api.models.CalendarUpdateManager import CalendarUpdateManager
 
+logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 
@@ -20,3 +22,8 @@ CORS(app.app)
 application = app.app
 
 logger.info('App initialized')
+
+# Start the update manager thread
+updater = CalendarUpdateManager()
+
+logger.info('Updater intialized')

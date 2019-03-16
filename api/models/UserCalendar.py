@@ -21,7 +21,9 @@ class UserCalendar:
         self.calendar = Calendar(requests.get(url).text)
 
     def update(self):
-        pass
+        """Updates the current calendar object
+        """
+        self.calendar = Calendar(requests.get(self.url).text)
 
     def getEventsDay(self, date: datetime):
         eventList = list()
@@ -51,5 +53,8 @@ class UserCalendarManager:
         calendar = self.calendars.setdefault(calendarName, UserCalendar(getCalendarURL(calendarName)))
         return calendar
 
+    def getCalendars(self):
+        # Return a copy to avoid changing size during iteration in the update worker
+        return self.calendars.copy()
 
 CALENDAR_MANAGER = UserCalendarManager()
