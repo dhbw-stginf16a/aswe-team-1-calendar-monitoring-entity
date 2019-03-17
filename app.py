@@ -7,7 +7,6 @@ from flask_cors import CORS
 
 from api.models.CalendarUpdateManager import CalendarUpdateManager
 
-logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 
