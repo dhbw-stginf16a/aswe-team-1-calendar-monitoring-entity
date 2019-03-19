@@ -15,7 +15,7 @@ deploy:
   script: bash ./deploy.sh
   on:
     branch: master
-
+    tags: true
 env:
   global:
   - DOCKER_USERNAME=thorekr
