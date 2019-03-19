@@ -1,14 +1,16 @@
-FROM python:3.6
+FROM python:3.6-alpine
 
 LABEL maintainer="Thore Kruess"
 
-RUN pip install pipenv
+RUN adduser -D flask && pip install pipenv
 
-RUN pipenv install --deploy --system
+WORKDIR /app
 
 COPY . /app
 
-WORKDIR /app
+RUN pipenv install --deploy --system && chown -R flask:flask /app
+
+USER flask
 
 EXPOSE 8080
 
