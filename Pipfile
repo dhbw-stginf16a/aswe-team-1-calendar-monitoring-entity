@@ -8,7 +8,7 @@ name = "pypi"
 [packages]
 
 connexion = {extras = ["swagger-ui"]}
-Flask-Cors = "*"
+flask-cors = "*"
 gunicorn = "*"
 requests = "*"
 ics = "*"
@@ -21,6 +21,7 @@ pytest = "*"
 pylint = "*"
 "flake8" = "*"
 coverage = "*"
+requests-mock = "*"
 
 
 [requires]

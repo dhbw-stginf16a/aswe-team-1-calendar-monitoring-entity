@@ -1,6 +1,8 @@
 from datetime import datetime
 import pytest
 
+import requests
+
 from .TestConnexion import TestConnexion
 
 
@@ -8,8 +10,15 @@ from .TestConnexion import TestConnexion
 class TestRequest(TestConnexion):
     """A test to get events from the calendar api
     """
+    nasaURL = 'http://www.nasa.gov/templateimages/redesign/calendar/iCal/nasa_calendar.ics'
 
-    def test_getEventsDay(self, client):
+    @pytest.fixture(scope='class')
+    def nasaCalendar(self):
+        """A non-mocked request to get the nasa ics
+        """
+        return requests.get(self.nasaURL).text
+
+    def test_getEventsDay(self, client, requests_mock, nasaCalendar):
         request = {
             'type': 'event_date',
             'payload': {
@@ -17,12 +26,13 @@ class TestRequest(TestConnexion):
                 'date': '2007-11-01'
             }
         }
-
+        requests_mock.get('/api/v1/preferences/user/AntonHynkel', status_code=200, json={'calendarURL': self.nasaURL})
+        requests_mock.get(self.nasaURL, text=nasaCalendar)
         response = client.post('api/v1/request', json=request)
 
         assert response.status_code == 200
 
-    def test_getEventsTimerange(self, client):
+    def test_getEventsTimerange(self, client, requests_mock, nasaCalendar):
         request = {
             'type': 'event_timerange',
             'payload': {
@@ -31,7 +41,8 @@ class TestRequest(TestConnexion):
                 'endDate':  '2007-12-31'
             }
         }
-
+        requests_mock.get('/api/v1/preferences/user/AntonHynkel', status_code=200, json={'calendarURL': self.nasaURL})
+        requests_mock.get(self.nasaURL, text=nasaCalendar)
         response = client.post('api/v1/request', json=request)
 
         assert response.status_code == 200

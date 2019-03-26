@@ -19,4 +19,6 @@ deploy:
 env:
   global:
   - DOCKER_USERNAME=thorekr
+  - OWN_URL='http://localhost:5000/api/v1/'
+  - CENTRAL_NODE_BASE_URL='http://localhost:8080/api/v1/'
   - secure: tP/EP8m4uIooUcfJmr9WCDdox3aQOzXODCtWt1amStNyhetlst7B+SvQakQOfCxmgoiZj6BmsIPIlKJ7Kj5kqS0gfq/+A4CczvabjQ9qB2LWaXNe/PEolSittv1AgmRlY5EIjEqlXIJIXXqfn2fDVlLZfhZSLyPVHJ4oIbRQJXmR7RBFrLb4NDi5Y9LC5GTVkFfK9/VjD2GpG08gCmAePYxh2m3pV82vdVpksfgiKMS7zK/s7/b5AePozZu2MOLkxIfqWagAnLujpLdb9LMzfNKRqnnv/oAk5sCbqYAA/9+bouTsoreXoVe+2DoURDVesG5Xze/nn1gZVQr+yomuGtykOfzayZuABeo3Z0OfYZezEmJXrg7W9bm99T7KJdKY3RE3VaHOhx9JCeXc/s8jJELblHZPhVJNvqiaA+D83Q0Mi9ciF2ylqGDDCpecbyKkh3NVjcIWnNRSwxGg5UxKavAbwCFZQrAKIfGSHh+BrXifJj6Ua71wQBcXOI9lfFFNvheotGwk+Df0mmep7LR5vxza/QEaMWj1uVawvRGR2ApGNMbKrhOl6Cq6OfDD0tLBDE5WzkJRbuSALVCQIOyj/h+AWl45xiALhVhnPY9RlPQehY+Bwz8v9FE/RiNHaV5e2Ew4g7zYe5K+cEqwjxEW56tUGNudZC0EoxJO5QNBDOU=
