@@ -11,7 +11,7 @@ class TestUpdateManager:
     """Test the calendar update manager
     """
     calendarURL = 'https://gist.githubusercontent.com/ThoreKr/1b5b66a48fca07f568f362be4221202a/raw/82cc5301a6201dfb7ef972c8349a4a4412f88d07/demo.ics'
-    CENTRAL_NODE_BASE_URL = os.environ["CENTRAL_NODE_BASE_URL"]
+    CENTRAL_NODE_BASE_URL = os.environ.setdefault('CENTRAL_NODE_BASE_URL', 'http://localhost:8080/api/v1')
 
     @pytest.fixture(scope='class')
     def demoCalendar(self):
