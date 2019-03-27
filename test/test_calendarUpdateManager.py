@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import os
 
 import pytest
 import requests
@@ -10,6 +11,7 @@ class TestUpdateManager:
     """Test the calendar update manager
     """
     calendarURL = 'https://gist.githubusercontent.com/ThoreKr/1b5b66a48fca07f568f362be4221202a/raw/82cc5301a6201dfb7ef972c8349a4a4412f88d07/demo.ics'
+    CENTRAL_NODE_BASE_URL = os.environ["CENTRAL_NODE_BASE_URL"]
 
     @pytest.fixture(scope='class')
     def demoCalendar(self):
@@ -19,7 +21,7 @@ class TestUpdateManager:
 
     @pytest.fixture(scope='function')
     def testCalendar(self, requests_mock, demoCalendar):
-        requests_mock.get('/api/v1/preferences/user/DEMO', status_code=200, json={'calendarURL': self.calendarURL})
+        requests_mock.get(f'{self.CENTRAL_NODE_BASE_URL}/preferences/user/DEMO', status_code=200, json={'calendarURL': self.calendarURL})
         requests_mock.get(self.calendarURL, text=demoCalendar)
 
         calendar = CALENDAR_MANAGER.getCalendar('DEMO')
@@ -28,7 +30,7 @@ class TestUpdateManager:
         return CALENDAR_MANAGER
 
     def test_updateManager(self, testCalendar, requests_mock, demoCalendar):
-        requests_mock.get('/api/v1/preferences/user/DEMO', status_code=200, json={'calendarURL': self.calendarURL})
+        requests_mock.get(f'{self.CENTRAL_NODE_BASE_URL}/preferences/user/DEMO', status_code=200, json={'calendarURL': self.calendarURL})
         requests_mock.get(self.calendarURL, text=demoCalendar)
 
         updateManager = CalendarUpdateManager(calendarManager=testCalendar)

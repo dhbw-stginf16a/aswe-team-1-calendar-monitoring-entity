@@ -12,11 +12,11 @@ class TestConnexion:
     """The base test providing auth and flask clients to other tests
     """
     cache: dict = {}
+    CENTRAL_NODE_BASE_URL = os.environ["CENTRAL_NODE_BASE_URL"]
 
     #@requests_mock.mock()
     @pytest.fixture(scope='function')
     def client(self, requests_mock):
-        CENTRAL_NODE_BASE_URL = os.environ["CENTRAL_NODE_BASE_URL"]
-        requests_mock.post(f'{CENTRAL_NODE_BASE_URL}/monitoring', text='', status_code=204)
+        requests_mock.post(f'{self.CENTRAL_NODE_BASE_URL}/monitoring', text='', status_code=204)
         with app.app.test_client() as c:
             yield c

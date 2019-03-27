@@ -19,6 +19,7 @@ class TestRequest(TestConnexion):
         return requests.get(self.nasaURL).text
 
     def test_getEventsDay(self, client, requests_mock, nasaCalendar):
+        print(self.CENTRAL_NODE_BASE_URL)
         request = {
             'type': 'event_date',
             'payload': {
@@ -26,9 +27,9 @@ class TestRequest(TestConnexion):
                 'date': '2007-11-01'
             }
         }
-        requests_mock.get('/api/v1/preferences/user/AntonHynkel', status_code=200, json={'calendarURL': self.nasaURL})
+        requests_mock.get(f'{self.CENTRAL_NODE_BASE_URL}/preferences/user/AntonHynkel', status_code=200, json={'calendarURL': self.nasaURL})
         requests_mock.get(self.nasaURL, text=nasaCalendar)
-        response = client.post('api/v1/request', json=request)
+        response = client.post('/api/v1/request', json=request)
 
         assert response.status_code == 200
 
@@ -41,8 +42,8 @@ class TestRequest(TestConnexion):
                 'endDate':  '2007-12-31'
             }
         }
-        requests_mock.get('/api/v1/preferences/user/AntonHynkel', status_code=200, json={'calendarURL': self.nasaURL})
+        requests_mock.get(f'{self.CENTRAL_NODE_BASE_URL}/preferences/user/AntonHynkel', status_code=200, json={'calendarURL': self.nasaURL})
         requests_mock.get(self.nasaURL, text=nasaCalendar)
-        response = client.post('api/v1/request', json=request)
+        response = client.post('/api/v1/request', json=request)
 
         assert response.status_code == 200
