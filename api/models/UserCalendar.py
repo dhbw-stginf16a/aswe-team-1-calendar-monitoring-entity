@@ -26,6 +26,7 @@ class UserCalendar:
         self.calendar = Calendar(requests.get(self.url).text)
 
     def getEventsDay(self, date: datetime):
+        self.update()
         eventList = list()
         for event in self.calendar.events:
             if event.begin.date() == date.date():
