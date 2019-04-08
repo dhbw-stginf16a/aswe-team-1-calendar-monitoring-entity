@@ -27,7 +27,7 @@ class TestRequest(TestConnexion):
                 'date': '2007-11-01'
             }
         }
-        requests_mock.get(f'{self.CENTRAL_NODE_BASE_URL}/preferences/user/AntonHynkel', status_code=200, json={'calendarURL': self.nasaURL})
+        requests_mock.get(f'{self.CENTRAL_NODE_BASE_URL}/preferences/user/test', status_code=200, json={'calendarURL': self.nasaURL})
         requests_mock.get(self.nasaURL, text=nasaCalendar)
         response = client.post('/api/v1/request', json=request)
 
@@ -42,7 +42,7 @@ class TestRequest(TestConnexion):
                 'endDate':  '2007-12-31'
             }
         }
-        requests_mock.get(f'{self.CENTRAL_NODE_BASE_URL}/preferences/user/AntonHynkel', status_code=200, json={'calendarURL': self.nasaURL})
+        requests_mock.get(f'{self.CENTRAL_NODE_BASE_URL}/preferences/user/test', status_code=200, json={'calendarURL': self.nasaURL})
         requests_mock.get(self.nasaURL, text=nasaCalendar)
         response = client.post('/api/v1/request', json=request)
 
