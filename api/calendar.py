@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 
 def getCalendar(body):
-    calendar = CALENDAR_MANAGER.getCalendar(body['payload']['user'])
+    calendar = CALENDAR_MANAGER.getCalendar('test')
     if body['type'] == 'event_date':
         date = dateutil.parser.parse(body['payload']['date'])
         logger.debug(date)
