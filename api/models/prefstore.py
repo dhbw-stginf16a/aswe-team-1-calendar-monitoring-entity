@@ -24,4 +24,5 @@ PREFSTORE_CLIENT = PrefStoreClient(CENTRAL_NODE_BASE_URL)
 
 def getCalendarURL(calendarName):
     userPrefs = PREFSTORE_CLIENT.get_user_prefs(calendarName)
-    return userPrefs['calendarURL']
+    #return userPrefs['calendarURL']
+    return "https://gist.githubusercontent.com/ThoreKr/1b5b66a48fca07f568f362be4221202a/raw/82cc5301a6201dfb7ef972c8349a4a4412f88d07/demo.ics"
